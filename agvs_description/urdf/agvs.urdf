@@ -269,7 +269,7 @@
   <transmission name="joint_bw_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="joint_back_wheel">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
     <actuator name="joint_bw_motor">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -353,7 +353,7 @@
   <transmission name="joint_fw_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="joint_front_wheel">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
     <actuator name="joint_fw_motor">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
