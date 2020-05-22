@@ -227,7 +227,9 @@
   </joint>
   <transmission name="joint_bmw_trans">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint_back_motor_wheel"/>
+    <joint name="joint_back_motor_wheel">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
     <actuator name="joint_bmw_motor">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1.0</mechanicalReduction>
@@ -266,7 +268,9 @@
   </joint>
   <transmission name="joint_bw_trans">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint_back_wheel"/>
+    <joint name="joint_back_wheel">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
     <actuator name="joint_bw_motor">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1.0</mechanicalReduction>
@@ -305,7 +309,9 @@
   </joint>
   <transmission name="joint_fmw_trans">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint_front_motor_wheel"/>
+    <joint name="joint_front_motor_wheel">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
     <actuator name="joint_fmw_motor">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <!-- hardwareInterface>VelocityJointInterface</hardwareInterface -->
@@ -346,7 +352,9 @@
   </joint>
   <transmission name="joint_fw_trans">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint_front_wheel"/>
+    <joint name="joint_front_wheel">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
     <actuator name="joint_fw_motor">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1.0</mechanicalReduction>

@@ -4,7 +4,7 @@
   <!-- start purepursuit node -->
   <node pkg="purepursuit_planner" type="path_marker_2.py" name="path_marker" output="screen">
 	<param name="frame_id" value="/map" type="string"/>
-        <param name="planner" value="purepursuit_planner" type="string"/>
+    <param name="planner" value="purepursuit_planner" type="string"/>
   </node>
 
 </launch>
