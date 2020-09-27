@@ -35,7 +35,7 @@
 
 #define ODOM_TIMEOUT_ERROR			0.2				// max num. of seconds without receiving odom values
 #define MAP_TIMEOUT_ERROR			0.2				// max num. of seconds without receiving map transformations
-#define AGVS_TURN_RADIUS			0.20			// distancia en la que empieza a girar el robot cuando llega a una esquina
+#define AGVS_TURN_RADIUS			1.7       // 0.20			// distancia en la que empieza a girar el robot cuando llega a una esquina
 #define MIN_ANGLE_BEZIER			0.261799388		// ángulo (radianes) mínimo entre segmentos de la recta para los que ajustaremos a una curva de BEZIER
 #define BEZIER_CONTROL_POINTS		5
 
@@ -47,7 +47,7 @@
 #define MAX_SPEED_LVL2				0.3
 #define MAX_SPEED					1.2
 
-#define WAYPOINT_POP_DISTANCE_M		0.10		//Distancia mínima para alcanzar punto objetivo m (PurePursuit)
+#define WAYPOINT_POP_DISTANCE_M		0.20	//0.10	//Distancia mínima para alcanzar punto objetivo m (PurePursuit)
 
 #define AGVS_FIRST_DECELERATION_DISTANCE 	0.5 	// meters -> when the vehicle is arriving to the goal, it has to decelarate at this distance
 #define AGVS_FIRST_DECELERATION_MAXSPEED	0.15	// m/s
@@ -1303,8 +1303,8 @@ public:
 		double aux_wref = wref;
 		wref += Kr * dth;
 		
-		//ROS_INFO("Purepursuit: current pos (%.2lf, %.2lf), next pos (%.2lf, %.2lf), lookahead %.2lf, yaw = %.3lf, curv = %.3lf, dth = %.3lf, wref = %.3lf(%.3lf), speed=%.3lf", current_position.x, current_position.y, next_position.x, next_position.y, dLookAhead, yaw, curv, dth, wref, aux_wref, dAuxSpeed);
-		//ROS_INFO("Purepursuit: yaw = %.3lf, curv = %.3lf, dth = %.3lf, wref = %.3lf", yaw, curv, dth, wref);
+		ROS_INFO("Purepursuit: current pos (%.2lf, %.2lf), next pos (%.2lf, %.2lf), lookahead %.2lf, yaw = %.3lf, curv = %.3lf, dth = %.3lf, wref = %.3lf(%.3lf), speed=%.3lf", current_position.x, current_position.y, next_position.x, next_position.y, dLookAhead, yaw, curv, dth, wref, aux_wref, dAuxSpeed);
+		ROS_INFO("Purepursuit: yaw = %.3lf, curv = %.3lf, dth = %.3lf, wref = %.3lf", yaw, curv, dth, wref);
 		
 		
 		////////////////// Sets the speed depending of distance or speed restrictions /////////
@@ -1381,7 +1381,7 @@ public:
 		// ref_msg.drive.speed = speed;
 		geometry_msgs::Twist ref_msg;
 		ref_msg.linear.x = speed;
-		ref_msg.angular.z = angle;
+		ref_msg.angular.z = angle*1.1;
 		vel_pub_.publish(ref_msg);
 	}
 	
