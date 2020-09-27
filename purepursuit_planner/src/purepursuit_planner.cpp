@@ -29,6 +29,7 @@
 #include <planner_msgs/GoToAction.h>
 #include <planner_msgs/goal.h>
 #include <geometry_msgs/Pose2D.h>
+#include <geometry_msgs/Twist.h>
 //#include <s3000_laser/enable_disable.h>
 
 
@@ -807,7 +808,8 @@ public:
 			
 		//
 		// Publish through the node handle Twist type messages to the guardian_controller/command topic
-		vel_pub_ = private_node_handle_.advertise<ackermann_msgs::AckermannDriveStamped>(cmd_topic_vel_, 1);
+		// vel_pub_ = private_node_handle_.advertise<ackermann_msgs::AckermannDriveStamped>(cmd_topic_vel_, 1);
+		vel_pub_ = private_node_handle_.advertise<geometry_msgs::Twist>(cmd_topic_vel_, 1);
 		//
 		if(ui_position_source == MAP_SOURCE)
 			tranform_map_pub_ = private_node_handle_.advertise<geometry_msgs::TransformStamped>("map_location", 100);
@@ -1370,15 +1372,16 @@ public:
 	/*!	\fn void SetRobotSpeed()
 	*/
 	void SetRobotSpeed(double speed, double angle){
-		ackermann_msgs::AckermannDriveStamped ref_msg;
-		
-		ref_msg.header.stamp = ros::Time::now();
-		ref_msg.drive.jerk = 0.0; 
-		ref_msg.drive.acceleration = 0.0; 
-		ref_msg.drive.steering_angle_velocity = 0.0;
-		ref_msg.drive.steering_angle = angle;
-		ref_msg.drive.speed = speed;
-		
+		// ackermann_msgs::AckermannDriveStamped ref_msg;
+		// ref_msg.header.stamp = ros::Time::now();
+		// ref_msg.drive.jerk = 0.0; 
+		// ref_msg.drive.acceleration = 0.0; 
+		// ref_msg.drive.steering_angle_velocity = 0.0;
+		// ref_msg.drive.steering_angle = angle;
+		// ref_msg.drive.speed = speed;
+		geometry_msgs::Twist ref_msg;
+		ref_msg.linear.x = speed;
+		ref_msg.angular.z = angle;
 		vel_pub_.publish(ref_msg);
 	}
 	
