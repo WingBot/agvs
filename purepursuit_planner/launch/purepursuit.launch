@@ -10,7 +10,7 @@
  	<!-- <param name="odom_topic" value="/agvs_robot_control/odom"/> -->
     <!-- <param name="cmd_topic_vel" value="/agvs_robot_control/command"/> -->
      	<param name="odom_topic" value="/odom"/>
-    <param name="cmd_topic_vel" value="/cmd_vel"/>
+    <param name="cmd_topic_vel" value="/follow/cmd_vel"/>
   </node>
 
 </launch>
