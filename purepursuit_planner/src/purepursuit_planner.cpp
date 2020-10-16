@@ -1503,23 +1503,28 @@ public:
 		static double pi_medios = M_PI / 2.0, max_diff = 5.0 * M_PI / 180.0;
 		int iCase = 0;
 
-		//
+		//if the target position is the same as the robot, we return 0
 		// si la posicion objetivo es la misma del robot, devolvemos 0
 		if( (target_position.dX == x) && (target_position.dY == y) ){
 			return 0;
 		}
+		// Calculation of the robot's director vector with respect to the robot's coordinate system
 		// Cálculo del vector director del robot respecto al sistema de coordenadas del robot
 		ux = cos(alpha);
 		uy = sin(alpha);
 		// Cálculo del vector entre el punto objetivo y el robot
+		// Calculation of the vector between the target point and the robot
 		vx = target_position.dX - x;
 		vy = target_position.dY - y;
 
 		// Cálculo del ángulo entre el vector director y el vector al punto objetivo
+		// Calculation of the angle between the director vector and the vector at the target point
 		beta = acos( (ux * vx + uy * vy) / ( sqrt(ux*ux + uy*uy) * sqrt(vx*vx + vy*vy) ) );
 
 		// Devolvemos valor dependiendo del ángulo entre la orientación del robot y la posición objetivo (radianes)
+		// We return value depending on the angle between the robot's orientation and the target position (radians)
 		// Tendremos en cuenta el valor del sentido de avance de la última ruta.
+		// We will take into account the value of the direction of advance of the last route.
 		if(fabs(beta) <= pi_medios){
 			// Calculo inicial de direccion
 			if(last_direction == 0)
